@@ -4,9 +4,8 @@ const agregarBtn = document.getElementById('agregarNombreBtn');
 const limpiarBtn = document.getElementById('limpiarBtn');
 
 function agregarNombre() {
-  const nombresListas = nombres.value.split(' ');
-  const listaNombresOrdenados = nombresListas.sort();
-  nombresOrdenados.textContent = listaNombresOrdenados;
+  const nombresListas = nombres.value.split(' ').sort();
+  nombresOrdenados.textContent = nombresListas;
 }
 
 function escucharInput() {
