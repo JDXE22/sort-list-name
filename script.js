@@ -2,22 +2,28 @@ const nombres = document.getElementById('nombre');
 const nombresOrdenados = document.getElementById('names-sorted');
 const agregarBtn = document.getElementById('agregarNombreBtn');
 const limpiarBtn = document.getElementById('limpiarBtn');
+const nombresLista = [];
 
 function agregarNombre() {
-  const nombresListas = nombres.value.split(' ').sort();
-  nombresOrdenados.textContent = nombresListas;
-}
+  const nombre = nombres.value.trim();
 
-function escucharInput() {
-  nombres.textContent = nombres.value;
-}
+  if (nombre === '') {
+    return;
+  }
 
-function limpiar() {
+  nombresLista.push(nombre);
+  nombresLista.sort();
+  nombresOrdenados.value = nombresLista.join('\n');
   nombres.value = '';
-  nombresOrdenados.textContent = '';
   nombres.focus();
 }
 
-nombres.addEventListener('input', escucharInput);
+function limpiar() {
+  nombresLista.length = 0;
+  nombres.value = '';
+  nombresOrdenados.value = '';
+  nombres.focus();
+}
+
 agregarBtn.addEventListener('click', agregarNombre);
 limpiarBtn.addEventListener('click', limpiar);
